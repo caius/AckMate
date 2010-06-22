@@ -3,8 +3,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface JPAckSearchButton : NSButton {
+@class JPAckResultTableView;
 
+@interface JPAckSearchButton : NSButton {
+  JPAckResultTableView *_resultsView;
 }
+
+@property (nonatomic, retain) IBOutlet JPAckResultTableView *resultsView;
 
 @end

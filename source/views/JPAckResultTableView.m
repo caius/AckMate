@@ -90,15 +90,17 @@
   return NSNotFound;
 }
 
-// // Don't like this - removing it for now. Perhaps spacebar is a better activation trigger
-// - (void)keyDown:(NSEvent *)event
-// {
-//   unichar u = [[event charactersIgnoringModifiers] characterAtIndex: 0];
-//   if ((u == NSEnterCharacter || u == NSCarriageReturnCharacter) && [self activateRow:[self selectedRow]])
-//     return;
-//   else
-//     [super keyDown:event];
-// }
+- (void)keyDown:(NSEvent *)event
+{
+  // Respond to the enter key to take action on the selected row
+  unichar u = [[event charactersIgnoringModifiers] characterAtIndex: 0];
+  if (u == NSEnterCharacter) {
+    [self activateRow:[self selectedRow] atPoint:NSMakePoint(0, 0)];
+    return;
+  }
+
+  [super keyDown:event];
+}
 
 - (NSRect)frameOfCellAtColumn:(NSInteger)columnIndex row:(NSInteger)rowIndex
 {
